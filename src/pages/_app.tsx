@@ -1,20 +1,13 @@
 import { type AppType } from "next/dist/shared/lib/utils";
 import Head from "next/head";
 import Header from "@/components/Header";
-
+import { useRouter } from "next/router";
 import "@/styles/globals.css";
 
-interface PageProps {
-  slug: string;
-}
+const MyApp: AppType = ({ Component, pageProps }) => {
+  const router = useRouter();
+  const currentRoute = router.pathname;
 
-const MyApp: AppType = ({
-  Component,
-  pageProps,
-}: {
-  Component: React.ComponentType<PageProps>;
-  pageProps: PageProps;
-}) => {
   return (
     <>
       <Head>
@@ -23,7 +16,7 @@ const MyApp: AppType = ({
         <link rel="string" href="/favstring.ico" />
       </Head>
 
-      <Header page={pageProps.slug} />
+      <Header route={currentRoute} />
 
       <main className="flex min-h-screen flex-col items-center justify-center py-8">
         <Component {...pageProps} />

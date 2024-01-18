@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function Header({ page }: { readonly page: string }) {
+function Header({ route }: { readonly route: string }) {
   return (
     <header className="flex flex-col items-center justify-center gap-4 py-8">
       <div className="flex flex-col items-center justify-center gap-4">
@@ -10,13 +10,13 @@ function Header({ page }: { readonly page: string }) {
         <nav className="flex flex-row items-center justify-center gap-4">
           <Link
             href="/"
-            className={`text-xl text-sapphire ${page === "index" ? "underline" : ""}`}
+            className={`text-xl text-sapphire ${route === "/" ? "underline" : ""}`}
           >
             home
           </Link>
           <Link
             href="/maintainers"
-            className={`text-xl text-sapphire ${page === "maintainers" ? "underline" : ""}`}
+            className={`text-xl text-sapphire ${route === "/maintainers" ? "underline" : ""}`}
           >
             maintainers
           </Link>
