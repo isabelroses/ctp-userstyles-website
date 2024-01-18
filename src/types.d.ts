@@ -71,8 +71,8 @@ export type Maintainer = {
 export type Maintainers = [Maintainer, ...Maintainer[]];
 
 export interface UserStylesSchema {
-  userstyles?: Userstyles;
-  collaborators?: Maintainers;
+  userstyles: Userstyles;
+  collaborators: Maintainers;
 }
 /**
  * All userstyles in the Catppuccin org.

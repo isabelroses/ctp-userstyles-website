@@ -16,7 +16,6 @@ export const getServerSideProps = async () => {
   return {
     props: {
       userstyles,
-      slug: "maintainers",
     },
   };
 };

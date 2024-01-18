@@ -1,40 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Userstyle } from "@/types";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 
 function UserstyleCard({ userstyle }: { readonly userstyle: Userstyle }) {
-  const [iconSvg, setIconSvg] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchIcon = async () => {
-      if (!userstyle.icon) return;
-
-      try {
-        const res = await fetch(
-          `https://simpleicons.org/icons/${userstyle.icon}.svg`,
-        );
-
-        if (res.ok) {
-          setIconSvg(await res.text());
-        } else {
-          throw new Error(
-            `Error fetching icon: ${res.status} ${res.statusText}`,
-          );
-        }
-      } catch (error) {
-        console.error("Error fetching icon:", error);
-      }
-    };
-
-    fetchIcon();
-  }, [userstyle.icon]);
-
   return (
     <div className="flex flex-col items-center justify-center gap-4 rounded-lg bg-surface0 p-4">
-      {(iconSvg && (
+      {(userstyle.icon && (
         <div
-          dangerouslySetInnerHTML={{ __html: iconSvg }}
+          dangerouslySetInnerHTML={{ __html: userstyle.icon }}
           className={`h-12 w-12 fill-${userstyle.color ?? "text"}`}
         />
       )) ?? (
