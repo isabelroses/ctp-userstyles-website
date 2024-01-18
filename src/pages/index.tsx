@@ -4,6 +4,7 @@ import { parse } from "yaml";
 import type { UserStylesSchema, Userstyle } from "@/types";
 import UserstyleCard from "@/components/UserstyleCard";
 import LazyLoad from "react-lazy-load";
+import Head from "next/head";
 
 export const getServerSideProps = async () => {
   try {
@@ -75,15 +76,20 @@ export default function Home({
   userstyles,
 }: Readonly<InferGetServerSidePropsType<typeof getServerSideProps>>) {
   return (
-    <div className="container flex flex-col items-center justify-center gap-4 px-4">
-      <div className="grid grid-cols-2 gap-4 text-text sm:grid-cols-4 md:gap-8">
-        {Array.isArray(userstyles) &&
-          userstyles.map((userstyle: Userstyle) => (
-            <LazyLoad key={String(userstyle.name)}>
-              <UserstyleCard userstyle={userstyle} />
-            </LazyLoad>
-          ))}
+    <>
+      <Head>
+        <title>Catppuccin Userstyles</title>
+      </Head>
+      <div className="container flex flex-col items-center justify-center gap-4 px-4">
+        <div className="grid grid-cols-2 gap-4 text-text sm:grid-cols-4 md:gap-8">
+          {Array.isArray(userstyles) &&
+            userstyles.map((userstyle: Userstyle) => (
+              <LazyLoad key={String(userstyle.name)}>
+                <UserstyleCard userstyle={userstyle} />
+              </LazyLoad>
+            ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

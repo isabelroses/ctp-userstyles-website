@@ -11,9 +11,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Catppuccin Userstyles Maintainers</title>
         <meta name="description" content="Catppuccin Userstyles" />
-        <link rel="string" href="/favstring.ico" />
+        <link rel="favicon" href="/favicon.ico" />
       </Head>
 
       <Header route={currentRoute} />
